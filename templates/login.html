@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="../static/css/log.css">
+</head>
+<body>
+    <div class="homebutton">
+        <a href="/" >Home</a>
+        </div>
+    <form action="/login_form_submission" method="POST">
+        {% csrf_token %}
+        <div class="container">
+          <h1>Sign in</h1>
+          {% for i in messages %} 
+          {% if 'failed' in i.tags %}
+          <h3 style="color: red;">{{i}}</h3>
+          {% endif %}
+          {% endfor %}
+          <label for="email"><b>Account number</b></label>
+          <input type="text" placeholder="Enter number" name="account_number" required>
+          
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="password" required>
+      
+          <div class="clearfix">
+      
+            <button type="submit" class="btn" id="signInButton">Sign In</button>
+            <div class="olduser"> <h3>New user</h3> <a  href="/register">Register</a> </div>
+          </div>
+        </div>
+      </form>
+      
+       <!-- <script>
+          const signInButton = document.getElementById('signInButton');
+          const emailInput = document.querySelector('input[name="email"]');
+          const passwordInput = document.querySelector('input[name="psw"]');
+      
+          
+          signInButton.addEventListener('click', function(event) {
+              event.preventDefault(); 
+              
+              const hardcodedEmail = "nithish@gmail.com";
+              const hardcodedPassword = "12345";
+      
+             
+              const enteredEmail = emailInput.value.trim();
+              const enteredPassword = passwordInput.value.trim();
+      
+             
+              if (enteredEmail === hardcodedEmail && enteredPassword === hardcodedPassword) {
+                  
+                  window.location.href = '/dashboard';
+              } else {
+                  
+                  alert("Invalid email or password. Please try again.");
+              }
+          });
+      </script>-->
+      
+</div>
+</body>
+</html>

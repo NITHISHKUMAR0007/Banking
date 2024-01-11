@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Reistration Form</title>
+    <link rel="stylesheet" href="../static/css/log.css">
+</head>
+<body>
+  <div class="homebutton">
+    <a href="/" >Home</a>
+    </div>
+    <form action="/register_form_submission" method="POST">
+        {% csrf_token %}
+        <div class="container">
+          <h1>Sign Up</h1>
+          {% for i in messages %}
+          {% if 'already_registered' in i.tags %}
+            <h3 style="color: red;padding: 10px;text-align: center;">{{i}}</h3>
+
+          {% endif %}
+        {% endfor %}
+      
+
+
+          <p>Please fill in this form to create an account.</p>
+      
+            <label for="email"><b>First name</b></label>
+            <input type="text" name="first_name" placeholder="First name" required>
+            <label for="email"><b>Last name</b></label>
+            <input type="text" name="last_name" placeholder="Last name" required>
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" name="email_id" required>
+          
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="password" required>
+      
+                  <label for="email"><b>Phone Number</b></label>
+            <br>
+          
+           <input type="phone" name="phone_number" placeholder="Number" required>
+      
+          <div class="clearfix">
+      
+            <button type="submit" class="btn">Sign Up</button>
+            <div class="olduser"> <h3>Arleady Register user</h3> <a  href="/login">Login</a> </div>
+          </div>
+        </div>
+    </form>
+      
+
+
+</div>
+</body>
+</html>
